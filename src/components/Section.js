@@ -19,7 +19,7 @@ const Section = ({genre}) => {
   useEffect(() => {
     fetchData()
 
-  }, [])
+  }, [fetchData])
 
 
 
