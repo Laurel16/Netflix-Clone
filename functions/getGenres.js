@@ -3,7 +3,7 @@ const fetch = require('node-fetch')
 exports.handler = async function (event) {
   const limit = JSON.parse(event.body)
 
-  const url = process.env.REACT_APP_ASTRA_GRAPHQL_ENDPOINT
+  const url = process.env.ASTRA_GRAPHQL_ENDPOINT
   const query = `
     query getAllGenres {
       reference_list (
@@ -20,7 +20,7 @@ exports.handler = async function (event) {
     method: 'POST',
     headers: {
       "Content-Type": "application/json",
-      "x-cassandra-token": process.env.REACT_APP_ASTRA_DB_APPLICATION_TOKEN
+      "x-cassandra-token": process.env.ASTRA_GRAPHQL_ENDPOINT
     },
     body: JSON.stringify({ query })
   })

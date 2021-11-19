@@ -25,7 +25,7 @@ const App = () => {
   useEffect(() => {
     fetchData()
 
-  }, [fetchData, limit])
+  }, [limit])
 
   return (
      <>

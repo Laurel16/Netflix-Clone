@@ -5,7 +5,7 @@ exports.handler = async function (event) {
   const genre = body.genre
   const pageState = body.pageState
 
-  const url = process.env.REACT_APP_ASTRA_GRAPHQL_ENDPOINT
+  const url = process.env.ASTRA_GRAPHQL_ENDPOINT
   const query = `
     query {
     movies_by_genre (
@@ -28,7 +28,7 @@ exports.handler = async function (event) {
     method: 'POST',
     headers: {
       "Content-Type": "application/json",
-      "x-cassandra-token": process.env.REACT_APP_ASTRA_DB_APPLICATION_TOKEN
+      "x-cassandra-token": process.env.ASTRA_GRAPHQL_ENDPOINT
     },
     body: JSON.stringify({ query })
   })
