@@ -14,7 +14,9 @@ const Section = ({genre}) => {
 
     setMovies(responseBody.data.movies_by_genre.values)
     setPageState(responseBody.data.movies_by_genre.pageState)
-  })
+  },
+  [limit, response, responseBody],
+  )
 
   useEffect(() => {
     fetchData()
