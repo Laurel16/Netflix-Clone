@@ -1,11 +1,11 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useCallback} from 'react'
 import Card from './Card'
 
 const Section = ({genre}) => {
   const [movies, setMovies] = useState(null)
   const [pageState, setPageState] = useState(null)
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     const response = await fetch(".netlify/functions/getMovies", {
       method:"POST",
       body: JSON.stringify({genre:genre, pageState: pageState})
@@ -14,13 +14,13 @@ const Section = ({genre}) => {
 
     setMovies(responseBody.data.movies_by_genre.values)
     setPageState(responseBody.data.movies_by_genre.pageState)
-  }
+  })
 
   useEffect(() => {
     fetchData()
     // eslint-disable-next-line react-hooks/exhaustive-deps
 
-  }, [])
+  }, [fetchData])
 
 
 

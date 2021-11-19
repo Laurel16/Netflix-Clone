@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useCallback} from 'react'
 import './App.css'
 import Section from './components/Section'
 import HeroSection from './components/HeroSection'
@@ -12,7 +12,7 @@ const App = () => {
 
 
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     const response = await fetch(".netlify/functions/getGenres", {
       method:"POST",
       body: limit
@@ -20,13 +20,13 @@ const App = () => {
     const responseBody = await response.json()
 
     setGenres(responseBody.data.reference_list.values)
-  }
+  })
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     fetchData()
 
-  }, [limit])
+  }, [fetchData, limit])
 
   return (
      <>
