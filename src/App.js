@@ -21,7 +21,7 @@ const App = () => {
 
     setGenres(responseBody.data.reference_list.values)
   },
-  [], )
+  [limit], )
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
