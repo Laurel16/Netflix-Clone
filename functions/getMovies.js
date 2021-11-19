@@ -28,7 +28,7 @@ exports.handler = async function (event) {
     method: 'POST',
     headers: {
       "Content-Type": "application/json",
-      "x-cassandra-token": process.env.ASTRA_GRAPHQL_ENDPOINT
+      "x-cassandra-token": process.env.ASTRA_DB_APPLICATION_TOKEN
     },
     body: JSON.stringify({ query })
   })
