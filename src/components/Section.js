@@ -6,7 +6,7 @@ const Section = ({genre}) => {
   const [pageState, setPageState] = useState(null)
 
   const fetchData = useCallback(async () => {
-    const response = await fetch(".netlify/functions/getMovies", {
+    const response = await fetch("/.netlify/functions/getMovies", {
       method:"POST",
       body: JSON.stringify({genre:genre, pageState: pageState})
     })
@@ -37,7 +37,7 @@ const Section = ({genre}) => {
           <div className="more-button"
           onClick={() => {
             setPageState(pageState)
-            fetchData()
+            fetchData({genre}, {pageState})
           }}
           ></div>
         </div>

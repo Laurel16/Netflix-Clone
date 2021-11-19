@@ -13,7 +13,7 @@ const App = () => {
 
 
   const fetchData = useCallback(async () => {
-    const response = await fetch(".netlify/functions/getGenres", {
+    const response = await fetch("/.netlify/functions/getGenres", {
       method:"POST",
       body: limit
     })
