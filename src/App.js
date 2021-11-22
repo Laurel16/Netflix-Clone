@@ -1,36 +1,30 @@
-import {useState, useEffect, useCallback} from 'react'
-import './App.css'
-import Section from './components/Section'
-import HeroSection from './components/HeroSection'
-import NavBar from './components/NavBar'
+
+import "./App.css"
+import { useEffect, useState } from "react"
+import Section from "./components/Section"
+import HeroSection from "./components/HeroSection"
+import NavBar from "./components/NavBar"
 
 const App = () => {
-
   const genreIncrement = 4
   const [genres, setGenres] = useState(null)
   const [limit, setLimit] = useState(genreIncrement)
 
-
-
-  const fetchData = useCallback(async () => {
+  const fetchData = async () => {
     const response = await fetch("/.netlify/functions/getGenres", {
-      method:"POST",
-      body: limit
+      method: "POST",
+      body: limit,
     })
     const responseBody = await response.json()
-
     setGenres(responseBody.data.reference_list.values)
-  },
-  [limit], )
+  }
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     fetchData()
-
-  }, [fetchData, limit])
+  }, [limit])
 
   return (
-     <>
+    <>
       <NavBar />
       <HeroSection />
       {genres && (
@@ -47,7 +41,6 @@ const App = () => {
         }}
       />
     </>
-
   )
 }
 
